@@ -15,9 +15,10 @@
     mode: '{{ mattermost_config_mode }}'
   with_items:
     - { key: 'SqlSettings.DriverName', value: 'postgres' }
-    - { key: 'SqlSettings.DataSource', value: 'postgres://{{ mattermost_database_user }}:{{ mattermost_database_password }}@{{ mattermost_database_host }}/{{ mattermost_database_name }}' }
+    - { key: 'SqlSettings.DataSource', value: 'postgres://{{ mattermost_database_user }}:{{ mattermost_database_password }}@{{ mattermost_database_host }}/{{ mattermost_database_name }}?sslmode={{ "enable" if mattermost_database_use_ssl_connection else "disable" }}&connect_timeout={{ mattermost_database_connection_timeout }}' }
     - { key: 'SqlSettings.AtRestEncryptKey', value: '{{ mattermost_database_at_rest_key }}' }
   notify: restart mattermost
+  no_log: True
 
 - name: Configure the path for data files
   json_file:
