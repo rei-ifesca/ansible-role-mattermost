@@ -22,5 +22,6 @@ mattermost_database_password: '{{ lookup("password", secret + "/mattermost/" +
                                 mattermost_database_user + "/password length=32") }}'
 mattermost_database_at_rest_key: '{{ lookup("password", secret + "/mattermost/" +
                                 ansible_fqdn + "/AtRestEncryptKey length=32") }}'
-
+mattermost_database_connection_timeout: 10
+mattermost_database_use_ssl_connection: false
 mattermost_config: []
