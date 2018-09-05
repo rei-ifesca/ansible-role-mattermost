@@ -27,6 +27,14 @@
     src: "{{ mattermost_install_root }}/{{ mattermost_version }}"
   notify: restart mattermost
 
+- name: Fix Mattermost log dir r-w rights
+  file:
+    state: directory
+    name: "{{ mattermost_data_root }}/current/logs"
+    owner: "{{ mattermost_user }}"
+    group: "{{ mattermost_group }}"
+    recurse: yes
+
 - name: Add systemd unit file for Mattermost
   template:
     src: mattermost.service.j2
