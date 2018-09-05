@@ -35,11 +35,16 @@ The address and port Mattermost listens on.
     mattermost_database_password:
 
 The driver, host, database, username and password to connect to the database.
+If not specified ``mattermost_database_password`` will be randomly generated an stored in ``{{secret + "/mattermost/" + ansible_fqdn + "/" mattermost_database_driver + "/" + mattermost_database_user + "/password}}``.
 Only the "postgresql" driver is supported by this role at the moment.
 
     mattermost_database_create: true
 
 Create the database and database user. Works only if the database is on localhost at the moment.
+
+    mattermost_database_at_rest_key
+
+Specify a 32-character key for encrypting and decrypting sensitive fields in the database. See https://docs.mattermost.com/administration/config-settings.html#at-rest-encrypt-key for more information. If not specified ``mattermost_database_at_rest_key`` will be randomly generated an stored in ``{{secret + "/mattermost/" + ansible_fqdn + "/AtRestEncryptKey}}``.
 
     mattermost_user_create: true
     mattermost_user: mattermost

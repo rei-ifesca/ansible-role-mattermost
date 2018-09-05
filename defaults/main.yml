@@ -17,5 +17,10 @@ mattermost_database_host: localhost
 mattermost_database_name: mattermost
 mattermost_database_user: mattermost
 mattermost_database_create: true
+mattermost_database_password: '{{ lookup("password", secret + "/mattermost/" +
+                                ansible_fqdn + "/" mattermost_database_driver + "/" +
+                                mattermost_database_user + "/password length=32") }}'
+mattermost_database_at_rest_key: '{{ lookup("password", secret + "/mattermost/" +
+                                ansible_fqdn + "/AtRestEncryptKey length=32") }}'
 
 mattermost_config: []
