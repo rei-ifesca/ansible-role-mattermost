@@ -16,7 +16,11 @@ Role Variables
 
 Available variables are listed below, along with default values (see `defaults/main.yml`):
 
-    mattermost_version: 4.3.1
+    mattermost_site_url: 'http://mattermost.example.com'
+
+Set the site_url to your domain. Do not forget to specify the protocol: HTTP or HTTPs.
+
+    mattermost_version: 5.1.1
 
 The version of Mattermost to install.
 The tarball's checksum is retrieved from the `_mattermost_versions` variable, but can be overwritten by setting `mattermost_tar_checksum`.

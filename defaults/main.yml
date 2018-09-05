@@ -9,7 +9,7 @@ mattermost_group: mattermost
 
 mattermost_config_writable: false
 
-mattermost_site_url: 'mattermost.example.com'
+mattermost_site_url: 'http://mattermost.example.com'
 mattermost_listen_address: '127.0.0.1:8065'
 
 mattermost_database_driver: postgres
